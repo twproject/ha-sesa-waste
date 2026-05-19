@@ -37,6 +37,8 @@ Visualizzazione completa del calendario raccolta rifiuti direttamente nella vist
 
 # Installazione tramite HACS
 
+[![Open your Home Assistant instance and add this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=twproject&repository=ha-sesa-waste&category=integration)
+
 ## 1. Aggiungere la repository custom
 
 In HACS:
@@ -218,9 +220,7 @@ La sequenza backend richiesta da SESA è:
 
 Testato su:
 
-* Home Assistant 2025+
-* Home Assistant OS
-* HACS
+* Home Assistant 2026.5+
 
 ---
 
