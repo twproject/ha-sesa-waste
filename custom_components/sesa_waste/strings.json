@@ -1,0 +1,22 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "SESA Waste Collection",
+        "description": "Configure SESA waste collection calendar.",
+        "data": {
+          "base_url": "Base URL",
+          "comune_id": "Comune ID",
+          "via_id": "Via ID",
+          "notifiche": "Enable notifications on SESA"
+        }
+      }
+    },
+    "error": {
+      "cannot_connect": "Unable to connect or configure SESA."
+    },
+    "abort": {
+      "already_configured": "This SESA address is already configured."
+    }
+  }
+}
