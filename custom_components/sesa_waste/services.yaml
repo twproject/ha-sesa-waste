@@ -1,0 +1,3 @@
+aggiorna_calendario:
+  name: Aggiorna calendario SESA
+  description: Scarica nuovamente dal sito SESA il calendario completo dell'anno corrente.

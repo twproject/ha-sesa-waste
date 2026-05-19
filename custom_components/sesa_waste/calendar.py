@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from datetime import datetime, time
+from datetime import timedelta
 
 from homeassistant.components.calendar import CalendarEntity, CalendarEvent
 from homeassistant.config_entries import ConfigEntry
@@ -18,9 +18,9 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry, async_add_e
 
 class SesaWasteCalendar(CoordinatorEntity[SesaWasteDataUpdateCoordinator], CalendarEntity):
     _attr_has_entity_name = True
-    _attr_name = "Waste Calendar"
+    _attr_name = "Calendario rifiuti"
     _attr_attribution = ATTRIBUTION
-    _attr_icon = "mdi:calendar"
+    _attr_icon = "mdi:calendar-month"
 
     def __init__(self, coordinator: SesaWasteDataUpdateCoordinator, entry: ConfigEntry) -> None:
         super().__init__(coordinator)
@@ -28,8 +28,9 @@ class SesaWasteCalendar(CoordinatorEntity[SesaWasteDataUpdateCoordinator], Calen
         self._attr_unique_id = f"{entry.entry_id}_calendar"
         self._attr_device_info = {
             "identifiers": {(DOMAIN, entry.entry_id)},
-            "name": "SESA Waste Collection",
+            "name": "SESA Raccolta Rifiuti",
             "manufacturer": "SESA",
+            "configuration_url": "https://app.sesaeste.it",
         }
 
     @property
@@ -39,18 +40,18 @@ class SesaWasteCalendar(CoordinatorEntity[SesaWasteDataUpdateCoordinator], Calen
             return None
         return CalendarEvent(
             summary=", ".join(next_event.types),
-            start=datetime.combine(next_event.date, time.min),
-            end=datetime.combine(next_event.date, time.max),
+            start=next_event.date,
+            end=next_event.date + timedelta(days=1),
             description="Raccolta rifiuti SESA",
         )
 
-    async def async_get_events(self, hass: HomeAssistant, start_date: datetime, end_date: datetime):
+    async def async_get_events(self, hass: HomeAssistant, start_date, end_date):
         events = self.coordinator.events_between(start_date.date(), end_date.date())
         return [
             CalendarEvent(
                 summary=", ".join(event.types),
-                start=datetime.combine(event.date, time.min),
-                end=datetime.combine(event.date, time.max),
+                start=event.date,
+                end=event.date + timedelta(days=1),
                 description="Raccolta rifiuti SESA",
             )
             for event in events

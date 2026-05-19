@@ -1,6 +1,6 @@
 {
   "domain": "sesa_waste",
-  "name": "SESA Waste Collection",
+  "name": "SESA Raccolta Rifiuti",
   "codeowners": [
     "@riccardocarturan"
   ],
@@ -13,5 +13,5 @@
   "requirements": [
     "beautifulsoup4==4.12.3"
   ],
-  "version": "0.1.0"
+  "version": "1.1.0"
 }

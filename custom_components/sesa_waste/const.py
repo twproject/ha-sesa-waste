@@ -1,14 +1,19 @@
 DOMAIN = "sesa_waste"
 
 CONF_COMUNE_ID = "comune_id"
+CONF_COMUNE_NAME = "comune_name"
 CONF_VIA_ID = "via_id"
+CONF_VIA_NAME = "via_name"
 CONF_NOTIFICHE = "notifiche"
 
-DEFAULT_BASE_URL = "https://app.sesaeste.it"
-DEFAULT_COMUNE_ID = 45
-DEFAULT_VIA_ID = 4301
+BASE_URL = "https://app.sesaeste.it"
 DEFAULT_NOTIFICHE = False
 
-UPDATE_INTERVAL_HOURS = 6
+ATTRIBUTION = "Dati forniti da app.sesaeste.it"
+SERVICE_AGGIORNA_CALENDARIO = "aggiorna_calendario"
 
-ATTRIBUTION = "Data provided by app.sesaeste.it"
+# Field names shown by Home Assistant config forms.
+# We intentionally use human readable keys to avoid showing internal names
+# such as comune_id and via_id.
+FIELD_COMUNE = "Comune"
+FIELD_VIA = "Via"
