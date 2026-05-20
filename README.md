@@ -2,9 +2,6 @@
 
 Integrazione custom per Home Assistant che importa automaticamente il calendario raccolta rifiuti da `app.sesaeste.it` direttamente nel calendario di Home Assistant.
 
-[![Open your Home Assistant instance and add this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=twproject&repository=ha-sesa-waste&category=integration)
-[![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
-
 ---
 
 ## Funzioni
@@ -71,7 +68,7 @@ in:
 3. In Home Assistant vai su:
 
 ```text
-Impostazioni → Dispositivi e Servizi → Aggiungi integrazione
+Impostazioni → Dispositivi e Servizi → Aggiungi integrazione  [![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
 ```
 
 4. Cerca:
