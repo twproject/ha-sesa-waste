@@ -65,24 +65,27 @@ in:
 
 2. Riavvia Home Assistant
 
-3. In Home Assistant vai su:
+# Configurazione   
+
+[![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
+
+1. In Home Assistant vai su:
 
 ```text
 Impostazioni → Dispositivi e Servizi → Aggiungi integrazione
 ```
-[![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
 
-4. Cerca:
+2. Cerca:
 
 ```text
 SESA Raccolta Rifiuti
 ```
 
-5. Seleziona:
+3. Seleziona:
    - Comune
    - Via
 
-6. Il calendario verrà importato automaticamente.
+4. Il calendario verrà importato automaticamente.
 
 ---
 
