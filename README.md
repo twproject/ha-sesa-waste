@@ -68,8 +68,9 @@ in:
 3. In Home Assistant vai su:
 
 ```text
-Impostazioni → Dispositivi e Servizi → Aggiungi integrazione  [![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
+Impostazioni → Dispositivi e Servizi → Aggiungi integrazione
 ```
+[![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
 
 4. Cerca:
 
