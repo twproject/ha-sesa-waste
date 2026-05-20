@@ -1,0 +1,9 @@
+{
+  "name": "SESA Raccolta Rifiuti",
+  "render_readme": true,
+  "domains": [
+    "sensor",
+    "calendar"
+  ],
+  "homeassistant": "2025.1.0"
+}
