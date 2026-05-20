@@ -24,7 +24,7 @@ Integrazione custom per Home Assistant che importa automaticamente il calendario
 
 # Installazione
 
-## Tramite HACS (consigliato)
+## Tramite HACS (consigliato) [![Open your Home Assistant instance and add this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=twproject&repository=ha-sesa-waste&category=integration)
 
 1. Apri **HACS → Integrazioni**
 2. Clicca **⋮ → Repository personalizzati**
@@ -133,7 +133,7 @@ Il calendario è compatibile con:
 
 # Refresh manuale calendario
 
-L'integrazione non interroga continuamente SESA.
+L'integrazione **NON INTERROGA** continuamente SESA.
 
 Il calendario viene scaricato solo:
 
@@ -215,9 +215,7 @@ La sequenza backend richiesta da SESA è:
 
 Testato su:
 
-- Home Assistant 2025+
-- Home Assistant OS
-- HACS
+- Home Assistant 2026.5+
 
 ---
 
@@ -225,29 +223,14 @@ Testato su:
 
 Questo progetto non è affiliato ufficialmente a SESA.
 
-Tutti i dati provengono da:
+Tutti i dati provengono da :
 
 ```text
-https://app.sesaeste.it
+https://www.sesaeste.it
 ```
-
----
-
-# Roadmap
-
-Possibili evoluzioni future:
-
-- notifiche automatiche Home Assistant
-- icone specifiche per tipo rifiuto
-- cache persistente su disco
-- traduzioni complete EN/IT
-- ricerca inline/filterable per comuni e vie
-- pubblicazione HACS ufficiale
 
 ---
 
 # Licenza
 
 MIT License
-
-hacs.json 
