@@ -12,13 +12,20 @@
         "title": "SESA Raccolta Rifiuti",
         "description": "Seleziona la via per {comune}.",
         "data": {
-          "Via": "Via"
+          "Via": "Via",
+          "HA Separate Garbage Collection Card": "HA Separate Garbage Collection Card"
         }
+      },
+      "redfoxy_colors": {
+        "title": "Colori HA Separate Garbage Collection Card",
+        "description": "Materiali trovati: {materiali}. Inserisci colori HEX nel formato #RRGGBB.",
+        "data": {}
       }
     },
     "error": {
       "cannot_connect": "Impossibile connettersi o configurare SESA.",
-      "no_addresses": "Nessuna via trovata per questo comune."
+      "no_addresses": "Nessuna via trovata per questo comune.",
+      "invalid_color": "Uno o più colori non sono validi. Usa il formato #RRGGBB."
     },
     "abort": {
       "already_configured": "Questo indirizzo SESA è già configurato."
@@ -37,9 +44,18 @@
         "title": "SESA Raccolta Rifiuti",
         "description": "Modifica la via per {comune}.",
         "data": {
-          "Via": "Via"
+          "Via": "Via",
+          "HA Separate Garbage Collection Card": "HA Separate Garbage Collection Card"
         }
+      },
+      "redfoxy_colors": {
+        "title": "Colori HA Separate Garbage Collection Card",
+        "description": "Materiali trovati: {materiali}. Inserisci colori HEX nel formato #RRGGBB.",
+        "data": {}
       }
+    },
+    "error": {
+      "invalid_color": "Uno o più colori non sono validi. Usa il formato #RRGGBB."
     }
   }
 }

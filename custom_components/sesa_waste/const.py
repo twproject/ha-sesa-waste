@@ -17,3 +17,8 @@ SERVICE_AGGIORNA_CALENDARIO = "aggiorna_calendario"
 # such as comune_id and via_id.
 FIELD_COMUNE = "Comune"
 FIELD_VIA = "Via"
+
+CONF_REDFOXY_COMPAT = "redfoxy_compat"
+DEFAULT_REDFOXY_COMPAT = False
+FIELD_REDFOXY = "HA Separate Garbage Collection Card"
+CONF_REDFOXY_COLORS = "redfoxy_colors"
