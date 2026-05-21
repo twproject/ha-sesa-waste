@@ -1,9 +1,6 @@
 # SESA Raccolta Rifiuti per Home Assistant
 
-Integrazione custom per Home Assistant che importa automaticamente il calendario raccolta rifiuti da `app.sesaeste.it` direttamente nel calendario di Home Assistant.
-
-[![Open your Home Assistant instance and add this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=twproject&repository=ha-sesa-waste&category=integration)
-[![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
+Integrazione custom per Home Assistant che importa automaticamente il calendario raccolta rifiuti da `www.sesaeste.it` direttamente nel calendario di Home Assistant.
 
 ---
 
@@ -18,14 +15,18 @@ Integrazione custom per Home Assistant che importa automaticamente il calendario
 - Nessun polling continuo verso SESA
 - Refresh manuale calendario
 - Options Flow per modificare Comune/Via senza reinstallare l'integrazione
-- Compatibilità opzionale con [HA Separate Garbage Collection Card](https://github.com/RedFoxy/HA-Separate-Garbage-Collection)
 - Compatibile con HACS come Custom Repository
+- Compatibilità opzionale con HA Separate Garbage Collection Card
+- Supporto eventi multimateriale
+- Colori custom per materiale raccolta
 
 ---
 
 # Installazione
 
 ## Tramite HACS (consigliato)
+
+[![Open your Home Assistant instance and add this repository inside the Home Assistant Community Store.](https://my.home-assistant.io/badges/hacs_repository.svg)](https://my.home-assistant.io/redirect/hacs_repository/?owner=twproject&repository=ha-sesa-waste&category=integration)
 
 1. Apri **HACS → Integrazioni**
 2. Clicca **⋮ → Repository personalizzati**
@@ -69,21 +70,35 @@ in:
 
 2. Riavvia Home Assistant
 
-3. In Home Assistant vai su:
+---
+
+# Configurazione
+
+[![Open your Home Assistant instance and show the add integration dialog.](https://my.home-assistant.io/badges/config_flow_start.svg)](https://my.home-assistant.io/redirect/config_flow_start/?domain=sesa_waste)
+
+1. In Home Assistant vai su:
 
 ```text
 Impostazioni → Dispositivi e Servizi → Aggiungi integrazione
 ```
 
-4. Cerca:
+2. Cerca:
 
 ```text
 SESA Raccolta Rifiuti
 ```
 
-5. Seleziona Comune, Via ed eventualmente **HA Separate Garbage Collection Card**
+3. Seleziona:
+   - Comune
+   - Via
 
-6. Il calendario verrà importato automaticamente.
+4. Opzionalmente abilita:
+
+```text
+HA Separate Garbage Collection Card
+```
+
+5. Il calendario verrà importato automaticamente.
 
 ---
 
@@ -95,9 +110,23 @@ SESA Raccolta Rifiuti
 
 Mostra il tipo di raccolta previsto per oggi.
 
+Esempi:
+
+```text
+Verde
+Umido
+Secco
+Umido, Plastica Lattine
+Nessuna raccolta
+```
+
+---
+
 ### Raccolta domani
 
 Mostra il tipo di raccolta previsto per domani.
+
+---
 
 ## Calendario
 
@@ -107,83 +136,73 @@ L'integrazione crea un calendario Home Assistant nativo:
 calendar.*_calendario_rifiuti
 ```
 
-Compatibile con vista calendario, dashboard, trigger calendario, reminder e automazioni.
+Il calendario è compatibile con:
+
+- Vista calendario Home Assistant
+- Trigger calendario
+- Dashboard
+- Reminder
+- Automazioni
 
 ---
 
-# Eventi multimateriale
-
-Il calendario espone sempre eventi atomici, uno per materiale:
-
-```text
-Umido
-Plastica Lattine
-```
-
-I sensori `Raccolta oggi` e `Raccolta domani` continuano invece a mostrare i materiali aggregati separati da virgola:
-
-```text
-Umido, Plastica Lattine
-```
-
-Se la compatibilità con **HA Separate Garbage Collection Card** è attiva, ogni evento atomico riceve il proprio colore nella descrizione:
-
-```text
-color: #FFD600
-```
-
 # HA Separate Garbage Collection Card
 
-L'integrazione può generare eventi compatibili con la card:
+L'integrazione supporta opzionalmente la card:
 
 ```text
 HA Separate Garbage Collection Card
 ```
 
-Repository della card:
+Repository ufficiale:
 
 ```text
 https://github.com/RedFoxy/HA-Separate-Garbage-Collection
 ```
 
-Durante la prima configurazione puoi abilitare l'opzione:
+Quando abilitata:
+
+- gli eventi calendario vengono separati per materiale
+- ogni materiale può avere un colore HEX personalizzato
+- la descrizione evento contiene automaticamente:
 
 ```text
-HA Separate Garbage Collection Card
+color: #HEX
 ```
 
-Quando l'opzione è attiva, l'integrazione:
+compatibile con la card RedFoxy.
 
-1. scarica il calendario annuale
-2. identifica i materiali univoci presenti
-3. mostra una schermata con un colore HEX per ciascun materiale
-4. salva i colori nella configurazione
-5. scrive nella descrizione degli eventi il metadato richiesto dalla card
+---
 
-Esempio descrizione evento:
+# Eventi multimateriale
+
+Il calendario Home Assistant espone sempre eventi separati per materiale.
+
+Esempio:
 
 ```text
-color: #00A651
+28/05 → Umido
+28/05 → Plastica Lattine
 ```
 
-Esempio configurazione colori:
+I sensori invece continuano a mostrare i materiali aggregati:
 
 ```text
-Umido              #8B5A2B
-Secco              #9E9E9E
-Vetro              #00A651
-Verde              #4CAF50
-Plastica Lattine   #FFD600
-Carta              #2196F3
+Umido, Plastica Lattine
 ```
 
-Per modificare questa opzione o cambiare i colori, rimuovere e ricreare l'integrazione.
+Questo migliora:
+
+- compatibilità dashboard
+- trigger calendario
+- automazioni
+- supporto RedFoxy
 
 ---
 
 # Refresh manuale calendario
 
-L'integrazione non interroga continuamente SESA.
+L'integrazione **NON INTERROGA** continuamente SESA.
 
 Il calendario viene scaricato solo:
 
@@ -205,6 +224,12 @@ eseguire:
 service: sesa_waste.aggiorna_calendario
 ```
 
+Questo forza:
+
+- nuova sessione PHP
+- nuova registrazione UUID
+- nuovo download calendario annuale
+
 ---
 
 # Modifica Comune/Via
@@ -217,11 +242,11 @@ Impostazioni → Dispositivi e Servizi → SESA Raccolta Rifiuti → Configura
 
 L'integrazione ricarica automaticamente il calendario dopo la modifica.
 
-Nota: la compatibilità con **HA Separate Garbage Collection Card** e i colori custom vengono scelti durante la prima configurazione. Per modificarli, rimuovi e ricrea l'integrazione.
-
 ---
 
 # Logging debug
+
+Per attivare il debug:
 
 ```yaml
 logger:
@@ -236,7 +261,22 @@ logger:
 
 Il backend SESA non espone API pubbliche documentate.
 
-L'integrazione replica il comportamento dell'app ufficiale Android tramite registrazione UUID, gestione sessione PHP, endpoint AJAX, parsing HTML e download calendario JSON.
+L'integrazione replica il comportamento dell'app ufficiale Android tramite:
+
+- registrazione UUID
+- gestione sessione PHP
+- endpoint AJAX
+- parsing HTML
+- download calendario JSON
+
+La sequenza backend richiesta da SESA è:
+
+1. registrazione dispositivo
+2. inizializzazione sessione
+3. setup indirizzo
+4. salvataggio impostazioni
+5. apertura homepage
+6. download calendario
 
 ---
 
@@ -247,6 +287,7 @@ Testato su:
 - Home Assistant 2026.5+
 - Home Assistant OS
 - HACS
+- HA Separate Garbage Collection Card
 
 ---
 
@@ -257,7 +298,7 @@ Questo progetto non è affiliato ufficialmente a SESA.
 Tutti i dati provengono da:
 
 ```text
-https://app.sesaeste.it
+https://www.sesaeste.it
 ```
 
 ---
@@ -265,3 +306,4 @@ https://app.sesaeste.it
 # Licenza
 
 MIT License
+
